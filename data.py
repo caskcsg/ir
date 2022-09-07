@@ -162,7 +162,7 @@ class CotMAECollator(DataCollatorForWholeWordMask):
             "input_ids": inputs,
             "labels": labels,
             "attention_mask": attention_mask,
-            "input_ids_unmasked": torch.tensor(encoded_examples, dtype=torch.long),
+            # "input_ids_unmasked": torch.tensor(encoded_examples, dtype=torch.long),
         }
 
         return batch
