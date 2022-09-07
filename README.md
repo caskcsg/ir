@@ -10,7 +10,7 @@ Please refer to [PyTorch Homepage](https://pytorch.org/) to install a pytorch ve
 Dependencies can be installed by running codes below. Specifically, we use transformers=4.17.0 for our experiments. Other versions should also work well.
 ```bash
 apt-get install parallel
-pip install transformers datasets nltk tensorboard
+pip install transformers datasets nltk tensorboard pandas tabulate
 ```
 
 We use [Tevatron](https://github.com/texttron/tevatron) toolkit for finetuning. You can install it by following its guidelines.
@@ -71,6 +71,7 @@ python -m torch.distributed.launch \
 
 ```
 We use a much small learn rate **1e-4** & batch size **1k** with longer enough steps as described in our paper. It takes 2.5 days to finish 800k steps pre-training on **8 A100 gpus**. We are also interested in another suitable hypermeters with higher learn rate and less steps to speed up pre-training. We will leave this to further works.
+
 ### Finetuning
 #### Finetuning on MS-Marco Passage ranking task with Tevatron
 [Tevatron](https://github.com/texttron/tevatron) toolkit for finetuning. Please refer to [msmarco/eval_msmarco.sh](./msmarco/eval_msmarco.sh) for more details. You can run a two stage finetuning by just running this scripts.
@@ -85,3 +86,17 @@ Scores of CoT-MAE that pre-trained for 800k steps & 1100k steps are listed as fo
 | cotmae-800k  | 0.391029 | 0.260172 | 0.875072  | 0.987679  | 6980           |
 | cotmae-1100k | 0.394431 | 0.265903 | 0.870344  | 0.986676  | 6980           |
 
+## Citations
+If you find our work useful, please cite our paper.
+```bibtex
+@misc{https://doi.org/10.48550/arxiv.2208.07670,
+  doi = {10.48550/ARXIV.2208.07670},
+  url = {https://arxiv.org/abs/2208.07670},
+  author = {Wu, Xing and Ma, Guangyuan and Lin, Meng and Lin, Zijia and Wang, Zhongyuan and Hu, Songlin},
+  keywords = {Computation and Language (cs.CL), Artificial Intelligence (cs.AI), FOS: Computer and information sciences, FOS: Computer and information sciences},
+  title = {ConTextual Mask Auto-Encoder for Dense Passage Retrieval},
+  publisher = {arXiv},
+  year = {2022},
+  copyright = {arXiv.org perpetual, non-exclusive license}
+}
+```
