@@ -2,7 +2,14 @@
 CoT-MAE is a transformers based Mask Auto-Encoder pretraining architecture designed for Dense Passage Retrieval. Details can be found in [ConTextual Mask Auto-Encoder for Dense Passage Retrieval](https://arxiv.org/abs/2208.07670).
 
 ## Get Started
-Models will be uploaded to Huggingface Hub soon.
+Checkpoints are available at Huggingface Hub.
+
+| Model                         | Descriptions                                                                              | Link                                                                                                  |
+|-------------------------------|-------------------------------------------------------------------------------------------|-------------------------------------------------------------------------------------------------------|
+| cotmae_base_uncased           | CoT-MAE Pretrained on unsupervised MS-Marco documents                                     | [caskcsg/cotmae_base_uncased](https://huggingface.co/caskcsg/cotmae_base_uncased)                     |
+| cotmae_base_msmarco_retriever | CoT-MAE Retriever finetuned on MS-Marco with BM25 hard negatives and mined hard negatives | [caskcsg/cotmae_base_msmarco_retriever](https://huggingface.co/caskcsg/cotmae_base_msmarco_retriever) |
+| cotmae_base_msmarco_reranker  | CoT-MAE Reranker finetuned on MS-Marco with mined hard negatives                          | [caskcsg/cotmae_base_msmarco_reranker](https://huggingface.co/caskcsg/cotmae_base_msmarco_reranker)   |
+
 
 ## Dependencies
 Please refer to [PyTorch Homepage](https://pytorch.org/) to install a pytorch version suitable for your system.
@@ -10,7 +17,7 @@ Please refer to [PyTorch Homepage](https://pytorch.org/) to install a pytorch ve
 Dependencies can be installed by running codes below. Specifically, we use transformers=4.17.0 for our experiments. Other versions should also work well.
 ```bash
 apt-get install parallel
-pip install transformers datasets nltk tensorboard pandas tabulate
+pip install transformers==4.17.0 datasets nltk tensorboard pandas tabulate
 ```
 
 We use [Tevatron](https://github.com/texttron/tevatron) toolkit for finetuning. You can install it by following its guidelines.
@@ -70,7 +77,7 @@ python -m torch.distributed.launch \
   --n_head_layers 2
 
 ```
-We use a much small learn rate **1e-4** & batch size **1k** with longer enough steps as described in our paper. It takes 2.5 days to finish 800k steps pre-training on **8 A100 gpus**. We are also interested in another suitable hypermeters with higher learn rate and less steps to speed up pre-training. We will leave this to further works.
+We use a much small learn rate **1e-4** & batch size **1k** with longer enough steps as described in our paper. It takes 2.5 days to finish 800k steps pre-training on **8 A100 gpus**. 
 
 ### Finetuning
 #### Finetuning on MS-Marco Passage ranking task with Tevatron
@@ -80,11 +87,11 @@ cd msmarco
 # Assume the pre-trained model is located in ./results/cotmae/model
 bash eval_msmarco.sh cotmae
 ```
-Scores of CoT-MAE that pre-trained for 800k steps & 1100k steps are listed as follows. Typically a longer training steps will increase the performance.
+Scores of CoT-MAE that pre-trained for 800k steps & 1200k steps are listed as follows. Typically a longer training steps will increase the performance.
 | Models       | MRR @10  | recall@1 | recall@50 | recall@1k | QueriesRanked  |
 |--------------|----------|----------|-----------|-----------|----------------|
 | cotmae-800k  | 0.391029 | 0.260172 | 0.875072  | 0.987679  | 6980           |
-| cotmae-1100k | 0.394431 | 0.265903 | 0.870344  | 0.986676  | 6980           |
+| cotmae-1200k | 0.394431 | 0.265903 | 0.870344  | 0.986676  | 6980           |
 
 ## Citations
 If you find our work useful, please cite our paper.
