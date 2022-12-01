@@ -1,5 +1,5 @@
 # CoT-MAE
-CoT-MAE is a transformers based Mask Auto-Encoder pretraining architecture designed for Dense Passage Retrieval. Details can be found in [ConTextual Mask Auto-Encoder for Dense Passage Retrieval](https://arxiv.org/abs/2208.07670).
+CoT-MAE is a transformers based Masked Auto-Encoder pretraining architecture designed for Dense Passage Retrieval. Details can be found in [ConTextual Masked Auto-Encoder for Dense Passage Retrieval](https://arxiv.org/abs/2208.07670) (AAAI 2023).
 
 ## Get Started
 Checkpoints are available at Huggingface Hub.
@@ -95,15 +95,3 @@ Scores of CoT-MAE that pre-trained for 800k steps & 1200k steps are listed as fo
 
 ## Citations
 If you find our work useful, please cite our paper.
-```bibtex
-@misc{https://doi.org/10.48550/arxiv.2208.07670,
-  doi = {10.48550/ARXIV.2208.07670},
-  url = {https://arxiv.org/abs/2208.07670},
-  author = {Wu, Xing and Ma, Guangyuan and Lin, Meng and Lin, Zijia and Wang, Zhongyuan and Hu, Songlin},
-  keywords = {Computation and Language (cs.CL), Artificial Intelligence (cs.AI), FOS: Computer and information sciences, FOS: Computer and information sciences},
-  title = {ConTextual Mask Auto-Encoder for Dense Passage Retrieval},
-  publisher = {arXiv},
-  year = {2022},
-  copyright = {arXiv.org perpetual, non-exclusive license}
-}
-```
