@@ -191,21 +191,13 @@ If you have any questions, please email to Guangyuan Ma (Ma787639046@outlook.com
 If you find our work useful, please consider to cite our paper.
 
 ```
-@article{DBLP:journals/corr/abs-2212-09598,
-  author       = {Xing Wu and
-                  Guangyuan Ma and
-                  Songlin Hu},
-  title        = {Query-as-context Pre-training for Dense Passage Retrieval},
-  journal      = {CoRR},
-  volume       = {abs/2212.09598},
-  year         = {2022},
-  url          = {https://doi.org/10.48550/arXiv.2212.09598},
-  doi          = {10.48550/ARXIV.2212.09598},
-  eprinttype    = {arXiv},
-  eprint       = {2212.09598},
-  timestamp    = {Wed, 08 Feb 2023 08:35:48 +0100},
-  biburl       = {https://dblp.org/rec/journals/corr/abs-2212-09598.bib},
-  bibsource    = {dblp computer science bibliography, https://dblp.org}
+@misc{wu2023queryascontext,
+      title={Query-as-context Pre-training for Dense Passage Retrieval}, 
+      author={Xing Wu and Guangyuan Ma and Wanhui Qian and Zijia Lin and Songlin Hu},
+      year={2023},
+      eprint={2212.09598},
+      archivePrefix={arXiv},
+      primaryClass={cs.IR}
 }
 ```
 
