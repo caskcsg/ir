@@ -10,36 +10,38 @@ cd data
 # Download Jsonl corpus converted and hosted by Tevatron 
 wget https://huggingface.co/datasets/Tevatron/wikipedia-nq-corpus/blob/main/corpus.jsonl.gz
 gunzip corpus.jsonl.gz
-
-# (Optional) Download original TSV corpus and convert to Jsonl
-wget https://dl.fbaipublicfiles.com/dpr/wikipedia_split/psgs_w100.tsv.gz
-gunzip psgs_w100.tsv.gz
-python convert_tsv_to_jsonl.py --input_path psgs_w100.tsv --output_path corpus.jsonl
 ```
 
 2. Download Training datasets from DPR-NQ
 ```bash
 mkdir nq
+
+# Get train set
 wget https://dl.fbaipublicfiles.com/dpr/data/retriever/biencoder-nq-train.json.gz
 wget https://dl.fbaipublicfiles.com/dpr/data/retriever/biencoder-nq-dev.json.gz
-wget https://dl.fbaipublicfiles.com/dpr/data/retriever/nq-test.qa.csv
 
 python convert_hn_format.py --input_path biencoder-nq-train.json.gz --output_path nq/nq-train.jsonl
 python convert_hn_format.py --input_path biencoder-nq-dev.json.gz --output_path nq/nq-dev.jsonl
-python convert_tsv_to_jsonl.py --input_path nq-test.qa.csv --output_path nq/nq-test.jsonl --type query
+
+# Get test set
+wget "https://huggingface.co/datasets/Tevatron/wikipedia-nq/resolve/main/nq-test.jsonl.gz?download=true" -O "nq/nq-test.jsonl.gz"
+gunzip nq/nq-test.jsonl.gz
 ```
 
 3. Download Training datasets from DPR-TQA
 ```bash
 mkdir trivia
+
+# Get train set
 wget https://dl.fbaipublicfiles.com/dpr/data/retriever/biencoder-trivia-train.json.gz
 wget https://dl.fbaipublicfiles.com/dpr/data/retriever/biencoder-trivia-dev.json.gz
-wget https://dl.fbaipublicfiles.com/dpr/data/retriever/trivia-test.qa.csv.gz
-gunzip trivia-test.qa.csv.gz
 
 python convert_hn_format.py --input_path biencoder-trivia-train.json.gz --output_path trivia/trivia-train.jsonl
 python convert_hn_format.py --input_path biencoder-trivia-dev.json.gz --output_path trivia/trivia-dev.jsonl
-python convert_tsv_to_jsonl.py --input_path trivia-test.qa.csv --output_path trivia/trivia-test.jsonl --type query
+
+# Get test set
+wget "https://huggingface.co/datasets/Tevatron/wikipedia-trivia/resolve/main/trivia-test.jsonl.gz?download=true" -O "trivia/trivia-test.jsonl.gz"
+gunzip trivia/trivia-test.jsonl.gz
 ```
 
 ## Fine-tune and Test on NQ or TQA
