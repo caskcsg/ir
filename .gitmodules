@@ -1,4 +1,4 @@
 [submodule "tdro"]
 	path = tdro
-	url = https://github.com/tdro-llm/tdro
+	url = https://github.com/ma787639046/tdro
 	branch = main
