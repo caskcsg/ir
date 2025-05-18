@@ -1,3 +1,7 @@
+[submodule "bowdpr"]
+	path = bowdpr
+	url = https://github.com/ma787639046/bowdpr.git
+	branch = main
 [submodule "tdro"]
 	path = tdro
 	url = https://github.com/ma787639046/tdro.git
