@@ -1,4 +1,8 @@
 [submodule "tdro"]
 	path = tdro
-	url = https://github.com/ma787639046/tdro
+	url = https://github.com/ma787639046/tdro.git
+	branch = main
+[submodule "lightretriever"]
+	path = lightretriever
+	url = https://github.com/caskcsg/lightretriever.git
 	branch = main
